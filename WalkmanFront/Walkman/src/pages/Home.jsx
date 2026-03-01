@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Play,
@@ -553,6 +553,12 @@ export default function Home() {
                     }
                 }}
                 languages={LANGUAGES}
+            />
+
+            <AddToPlaylistModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                song={selectedSong}
             />
         </>
     );

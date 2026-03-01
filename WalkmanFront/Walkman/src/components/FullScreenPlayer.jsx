@@ -57,9 +57,8 @@ export default function FullScreenPlayer({
         }
     }, [song]);
 
-    if (!song) return null;
-
     const { r, g, b } = gradientColor;
+
 
     const handleProgressClick = (e) => {
         if (!onSeek) return;
@@ -114,6 +113,10 @@ export default function FullScreenPlayer({
             window.removeEventListener("touchend", handleEnd);
         };
     }, [isDragging]);
+
+    if (!song) return null;
+
+
 
     return (
         <div

@@ -15,7 +15,7 @@ export default function Playlists() {
         fetchPlaylists();
     }, []);
 
-    const fetchPlaylists = async (isRefresh = false) => {
+    const fetchPlaylists = async () => {
         const storedId = localStorage.getItem("userId");
         const userId = storedId && !isNaN(storedId) ? Number(storedId) : (storedId || 1);
 

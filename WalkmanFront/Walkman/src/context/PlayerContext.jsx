@@ -10,6 +10,31 @@ export function PlayerProvider({ children }) {
     const [currentIndex, setCurrentIndex] = useState(-1);
     const audioRef = useRef(new Audio());
 
+    const pauseSong = useCallback(() => {
+        audioRef.current.pause();
+        setIsPlaying(false);
+    }, []);
+
+    const resumeSong = useCallback(() => {
+        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
+    }, []);
+
+    const nextSong = useCallback(() => {
+        if (queue.length > 0 && currentIndex < queue.length - 1) {
+            const nextIdx = currentIndex + 1;
+            setCurrentIndex(nextIdx);
+            setCurrentSong(queue[nextIdx]);
+        }
+    }, [queue, currentIndex]);
+
+    const prevSong = useCallback(() => {
+        if (queue.length > 0 && currentIndex > 0) {
+            const prevIdx = currentIndex - 1;
+            setCurrentIndex(prevIdx);
+            setCurrentSong(queue[prevIdx]);
+        }
+    }, [queue, currentIndex]);
+
     // Wire up global ended listener once
     useEffect(() => {
         const audio = audioRef.current;
@@ -28,7 +53,7 @@ export function PlayerProvider({ children }) {
             audio.pause();
             audio.src = "";
         };
-    }, [queue, currentIndex]); // Dependencies important for handleEnded to see latest state
+    }, [queue, currentIndex, nextSong]); // Added nextSong to dependencies
 
     // Auto-play whenever currentSong changes
     useEffect(() => {
@@ -87,31 +112,6 @@ export function PlayerProvider({ children }) {
         setCurrentSong(songs[startIndex]);
     }, []);
 
-    const nextSong = useCallback(() => {
-        if (queue.length > 0 && currentIndex < queue.length - 1) {
-            const nextIdx = currentIndex + 1;
-            setCurrentIndex(nextIdx);
-            setCurrentSong(queue[nextIdx]);
-        }
-    }, [queue, currentIndex]);
-
-    const prevSong = useCallback(() => {
-        if (queue.length > 0 && currentIndex > 0) {
-            const prevIdx = currentIndex - 1;
-            setCurrentIndex(prevIdx);
-            setCurrentSong(queue[prevIdx]);
-        }
-    }, [queue, currentIndex]);
-
-    const pauseSong = useCallback(() => {
-        audioRef.current.pause();
-        setIsPlaying(false);
-    }, []);
-
-    const resumeSong = useCallback(() => {
-        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
-    }, []);
-
     const togglePlayPause = useCallback(() => {
         if (isPlaying) {
             pauseSong();
@@ -127,6 +127,7 @@ export function PlayerProvider({ children }) {
     const collapsePlayer = useCallback(() => {
         setIsExpanded(false);
     }, []);
+
 
     return (
         <PlayerContext.Provider
@@ -159,4 +160,5 @@ export function usePlayer() {
     return ctx;
 }
 
-export default PlayerContext;
+export default PlayerProvider;
+

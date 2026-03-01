@@ -88,7 +88,7 @@ function ProgressBar({ progress, currentTime, duration, audioRef }) {
 
 // ─── Minimized Bar ────────────────────────────────────────────────────────────
 
-function MinimizedBar({ song, isPlaying, progress, currentTime, duration, audioRef, onTogglePlay, onExpand, onNext, onPrev }) {
+function MinimizedBar({ song, isPlaying, progress, currentTime, duration, onTogglePlay, onExpand, onNext, onPrev }) {
     return (
         <div className="flex flex-col cursor-pointer" onClick={onExpand}>
             {/* Thin gold progress indicator at very top */}

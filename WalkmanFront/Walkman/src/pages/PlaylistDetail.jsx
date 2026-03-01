@@ -21,7 +21,8 @@ export default function PlaylistDetail() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const { currentSong, isPlaying, playPlaylist, playSong, pauseSong } = usePlayer();
+    // Destructure resumeSong from usePlayer. playSong is not used here.
+    const { currentSong, isPlaying, playPlaylist, pauseSong, resumeSong } = usePlayer();
 
     useEffect(() => {
         fetchPlaylist();

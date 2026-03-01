@@ -1,0 +1,87 @@
+﻿
+> walkman@0.0.0 lint
+> eslint .
+
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\components\AddToPlaylistModal.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\components\CreatePlaylistModal.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\components\FullScreenPlayer.jsx
+    3:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                 no-unused-vars
+   99:5   error    React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+  116:8   warning  React Hook useEffect has a missing dependency: 'handleVinylInteraction'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\components\LanguageModal.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\components\MusicPlayer.jsx
+   1:51  error  'useRef' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  91:75  error  'audioRef' is defined but never used                                           no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\components\PlaylistCard.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\context\PlayerContext.jsx
+   20:17  error    Error: Cannot access variable before it is declared
+
+`nextSong` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  18 |             if (queue.length > 0 && currentIndex < queue.length - 1) {
+  19 |                 console.log("PlayerContext: Auto-playing next song in queue");
+> 20 |                 nextSong();
+     |                 ^^^^^^^^ `nextSong` accessed before it is declared
+  21 |             } else {
+  22 |                 setIsPlaying(false);
+  23 |             }
+
+  88 |     }, []);
+  89 |
+> 90 |     const nextSong = useCallback(() => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |         if (queue.length > 0 && currentIndex < queue.length - 1) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 92 |             const nextIdx = currentIndex + 1;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 93 |             setCurrentIndex(nextIdx);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 94 |             setCurrentSong(queue[nextIdx]);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 95 |         }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 96 |     }, [queue, currentIndex]);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `nextSong` is declared here
+  97 |
+  98 |     const prevSong = useCallback(() => {
+  99 |         if (queue.length > 0 && currentIndex > 0) {  react-hooks/immutability
+   31:8   warning  React Hook useEffect has a missing dependency: 'nextSong'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/exhaustive-deps
+  156:17  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-refresh/only-export-components
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\pages\Home.jsx
+    1:27  error  'useRef' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                 no-unused-vars
+    2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                 no-unused-vars
+  207:32  error  'Icon' is defined but never used                                                              no-unused-vars
+  274:12  error  'isModalOpen' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u   no-unused-vars
+  276:12  error  'selectedSong' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\pages\MoodSelector.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\pages\PlaylistDetail.jsx
+   3:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                     no-unused-vars
+  24:51  error    'playSong' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                          no-unused-vars
+  28:8   warning  React Hook useEffect has a missing dependency: 'fetchPlaylist'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  54:39  error    'resumeSong' is not defined                                                                                       no-undef
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\pages\Playlists.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  18:35  error  'isRefresh' is assigned a value but never used                                 no-unused-vars
+
+D:\Projects\WalmanX\WalkmanFront\Walkman\src\pages\Search.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 26 problems (23 errors, 3 warnings)
+
