@@ -1,0 +1,40 @@
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: walkmanx-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: walkmanx
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  
+  frontend:
+    build: ./WalkmanFront/Walkman
+    container_name: walkmanx-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./walkmanx
+    container_name: walkmanx-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    restart: always
+    environment:
+      SERVER_PORT: 8080
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: walkmanx
+      DB_USER: root
+      DB_PASSWORD: root
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GEMINI_MODEL: gemini-2.5-flash
+      GEMINI_TEMP: 0.7
+volumes:
+  mysql_data:
