@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/playlists")
-@CrossOrigin(origins = "http://localhost:3000") // Allow Vite to connect
 @RequiredArgsConstructor
 public class PlaylistController {
 

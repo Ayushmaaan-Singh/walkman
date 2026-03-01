@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/search")
-@CrossOrigin(origins = "http://localhost:3000") // Keeps the CORS bouncer happy!
+ // Keeps the CORS bouncer happy!
 public class SearchController {
 
     @Autowired
